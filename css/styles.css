@@ -9,10 +9,10 @@
   --card-set-gap: 30px;
   --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-  /* max-width: 1600px; */
   background: var(--common-bg-color);
   color: var(--main-text-color);
   font-family: Roboto;
@@ -86,7 +86,7 @@ span {
   margin-right: 50px;
 }
 
-.nav-list .link {
+.nav-list .nav-link {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -96,13 +96,17 @@ span {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
 
-.nav-list .link:hover,
-.nav-list .link:focus {
+.nav-list .nav-link:hover,
+.nav-list .nav-link:focus {
   color: var(--accent-color);
 }
-.nav-list .link.current {
+.nav-list .nav-link.current {
   color: var(--accent-color);
 }
 
@@ -116,42 +120,31 @@ span {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
+
 .email:hover,
 .email:focus {
   color: var(--accent-color);
 }
+
 .phonenumber:hover,
 .phonenumber:focus {
   color: var(--accent-color);
 }
+
 .contact {
   display: flex;
   margin-left: auto;
 }
+
 .contact li:not(:last-child) {
   margin-right: 50px;
 }
-/* .email::before {
-  display: inline-block;
-  content: '';
-  width: 16px;
-  height: 12px;
-  margin-right: 10px;
-  background-image: url(../images/svg/envelope.svg);
-  
-} */
-/* .phonenumber::before {
-  display: inline-block;
-  content: '';
-  width: 10px;
-  height: 16px;
-  margin-right: 10px;
-  background-image: url(../images/svg/smartphone.svg);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  
-} */
+
 .email-icon,
 .phone-icon {
   fill: currentColor;
@@ -218,10 +211,18 @@ span {
   font-size: 16px;
   line-height: 1.63;
   cursor: pointer;
+  box-shadow: none;
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
+
+
 }
+
 .button:focus,
 .button:hover {
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   color: var(--common-bg-color);
   box-shadow: var(--card-shadow);
 }
@@ -304,7 +305,7 @@ span {
   padding: 25px 100px;
 }
 
-/* Чем мы занимаемся */
+/*------------------------------- Чем мы занимаемся -----------------*/
 
 .work {
   padding-bottom: 94px;
@@ -319,7 +320,44 @@ span {
   margin-left: 30px;
 }
 
-/*---------------------- Наша команда --------------------------*/
+.work-thumb { 
+  position: relative;
+
+}
+
+.work-list .work-title {
+  margin: 0;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  /* padding-left: 82px; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: transparent;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  color: #FFFFFF;
+  background: rgba(47, 48, 58, 0.8);
+  
+  transition-property: box-shadow, border;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
+
+}
+
+.work-thumb:hover .work-title {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #000000;;
+}
+
+
+
+/*-------------------------------- Наша команда --------------------------*/
 
 .team-section {
   padding-bottom: 94px;
@@ -373,6 +411,10 @@ span {
   border-radius: 50%;
   justify-content: center;
   align-items: center;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
 
 .social-item:not(:last-child) {
@@ -382,6 +424,10 @@ span {
 .social-icon {
   fill: var(--icon-color);
   /* outline: 1px solid tomato; */
+
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
 
 
@@ -404,7 +450,6 @@ span {
   font-size: 36px;
   line-height: 42px;
   text-align: center;
-  letter-spacing: 0.03em;
   color: var(--secondary-text-color);
 
 }
@@ -442,6 +487,10 @@ span {
   align-items: center;
   border: 1px solid #AFB1B8;
   border-radius: 4px;
+
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
   
 }
 
@@ -451,8 +500,11 @@ span {
   /* max-width: 100%;
   max-height: 100%; */
   
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
+
   
-  /* outline: 1px solid teal; */
 }
 
 .clients-link:hover {
@@ -485,7 +537,7 @@ footer {
 
 .address p {
   color: var(--common-bg-color);
-  font-style: normal;
+  font-style: 400;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.7;
@@ -496,12 +548,15 @@ footer {
 .address a {
   color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
-  font-style: normal;
+  font-style: 400;
   font-size: 14px;
   line-height: 1.71;
-  letter-spacing: 0.03em;
   text-decoration: none;
   display: block;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
 .address a:not(:last-child) {
   margin-bottom: 9px;
@@ -529,7 +584,6 @@ footer {
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--common-bg-color);
 }
@@ -553,21 +607,12 @@ footer {
   border-radius: 50%;
 }
 
-.social-link-footer {
-  display: flex;
-  width: 44px;
-  height: 44px;
-  
-  justify-content: center;
-  align-items: center;
-  
-  /* background-color: tomato; */
-}
 
 .footer-icon {
   max-width: 100%;
   max-height: 100%;
   fill: var(--common-bg-color);
+
   
 }
 
@@ -575,7 +620,7 @@ footer {
   background-color: var(--accent-color);
 }
 
-/* Портфолио */
+/*----------------------------------------- Портфолио ----------------------------*/
 
 /* Фильтры */
 .filter-section {
@@ -592,7 +637,7 @@ footer {
 }
 
 
-/* Проэкты */
+/*------------------------------------------ Проэкты ---------------------------*/
 
 .project-list {
   display: flex;
@@ -607,7 +652,11 @@ footer {
   margin-top: var(--card-set-gap);
   flex-basis: calc(100% / 3 - var(--card-set-gap));
   border: 1px solid var(--border-project-colour);
+  box-shadow: none;
 
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--transition-timing);
 }
 
 .project-list > li:hover {
@@ -640,3 +689,4 @@ footer {
   border: none;
   border-radius: 4px;
 }
+
