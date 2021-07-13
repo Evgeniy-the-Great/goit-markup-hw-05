@@ -89,7 +89,7 @@ span {
 .nav-list .nav-link {
   display: block;
   padding-top: 32px;
-  padding-bottom: 32px;
+  /* padding-bottom: 32px; */
   color: var(--secondary-text-color);
   font-weight: 500;
   font-size: 14px;
@@ -108,6 +108,15 @@ span {
 }
 .nav-list .nav-link.current {
   color: var(--accent-color);
+}
+
+.current::after {
+  display: flex;
+  content: '';
+  margin-top: 28px;
+  border-bottom: 4px solid var(--accent-color);
+  border-radius: 2px;
+
 }
 
 /* -----------------------Контакты------------------------- */
@@ -221,6 +230,7 @@ span {
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 30px;
   height: 30px;
+  padding: 6px;
   border-radius: 50%;
   /* fill: var(--secondary-text-color); */
 }
@@ -578,7 +588,7 @@ footer {
 
 .address p {
   color: var(--common-bg-color);
-  font-style: 400;
+  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.7;
@@ -588,17 +598,21 @@ footer {
 
 .address a {
   color: rgba(255, 255, 255, 0.6);
+  font-style: normal;
   font-weight: 400;
-  font-style: 400;
+  font-style: normal;
   font-size: 14px;
   line-height: 1.71;
   text-decoration: none;
+  
   display: block;
 
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: var(--transition-timing);
 }
+
+
 .address a:not(:last-child) {
   margin-bottom: 9px;
 }
@@ -679,11 +693,12 @@ footer {
 
 .project-thumb {
   position: relative;
-}
-  
-.project-item {
   overflow: hidden;
 }
+  
+/* .project-item {
+  overflow: hidden;
+} */
 
 .project.overlay {
   position: absolute;
@@ -691,6 +706,7 @@ footer {
   left: 0;
   margin: 0;
   padding: 63px 24px;
+  
 
   font-style: normal;
   font-weight: normal;
@@ -732,12 +748,12 @@ footer {
   transform: translateY(100%);
 }
 
-.project-thumb:hover::before {
-  opacity: 1;
-}
+
 
 .project-item:hover .project-thumb::before {
   transform: translateY(0);
+  opacity: 1;
+  
 }
 
 
